@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="simplelayout.types.news">
+
+    <include package="plone.app.contentmenu" />
+
+
+    <browser:page
+      for="Products.ATContentTypes.interface.topic.IATTopic"
+      name="news_topic_listing"
+      class=".news_topic_listing.SimplelayoutNewsListing"
+      permission="zope.Public"
+      template="news_topic_listing.pt"
+      />
+
+
+</configure>
