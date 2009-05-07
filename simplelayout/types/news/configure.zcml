@@ -18,5 +18,6 @@
 
     <include package=".browser" />
 
+    <include file="dependencies.zcml" />
 
 </configure>
