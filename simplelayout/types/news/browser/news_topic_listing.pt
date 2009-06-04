@@ -5,7 +5,7 @@
 
 <body>
 
-<div metal:fill-slot="main">
+<div metal:fill-slot="main" class="SimplelayoutNewsListing">
 <metal:main_macro define-macro="main">
     <metal:body define-macro="body_macro"
                 tal:define="kssClassesView context/@@kss_field_decorator_view;
@@ -63,7 +63,6 @@
                                                item_start item/start/ISO|item/StartDate|nothing;
                                                item_end item/end/ISO|item/EndDate|nothing;">
 
-                            <dt metal:define-macro="listitem">
 
                                 <h2>
                                     <a href="#"
@@ -77,7 +76,6 @@
                                     </span>
                                 </h2>
 
-                            </dt>
 
                             <dd>
                                 <span tal:omit-tag="" tal:condition="not:item_description"> 
@@ -90,8 +88,6 @@
                         </tal:block>
                         </tal:entry>
                     </dl>
-                    
-                    <hr />
                 
                     
                 </tal:listing>
