@@ -1,8 +1,10 @@
 Changelog
 =========
 
-1.0 - Unreleased
+1.0
 ----------------
 
 * Initial release
+* news type based on simplelayout page
+* add simple topic summary news view
 

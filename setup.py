@@ -25,6 +25,7 @@ setup(name='simplelayout.types.news',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'simplelayout.types.common',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
