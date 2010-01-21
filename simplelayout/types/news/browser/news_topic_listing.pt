@@ -50,7 +50,7 @@
 
                 <tal:listing condition="folderContents">
 
-                    <dl>
+                    <div>
                         <tal:entry tal:repeat="item folderContents">
                         <tal:block tal:define="item_url item/getURL|item/absolute_url;
                                                item_id item/getId|item/id;
@@ -76,18 +76,17 @@
                                     </span>
                                 </h2>
 
-
-                            <dd>
+                            <div class="SimplelayoutNewsDescription">
                                 <span tal:omit-tag="" tal:condition="not:item_description"> 
                                     &nbsp; 
                                 </span> 
                                 <span class="description" tal:content="item_description">
                                     description 
                                 </span> 
-                            </dd>
+                            </div>
                         </tal:block>
                         </tal:entry>
-                    </dl>
+                    </div>
                 
                     
                 </tal:listing>
