@@ -34,12 +34,12 @@
  </action>
  <action title="Edit" action_id="edit" category="object"
     condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user"
-    url_expr="string:${object_url}/edit" visible="False">
+    url_expr="string:${object_url}/edit" visible="True">
   <permission value="Modify portal content"/>
  </action>
  <action title="Edit" action_id="edit-toggle" category="object"
     condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user"
-    url_expr="string:javascript:simplelayout.toggleEditMode()" visible="True">
+    url_expr="string:javascript:simplelayout.toggleEditMode()" visible="False">
   <permission value="Modify portal content"/>
  </action>
  <action title="Properties" action_id="metadata" category="object"
