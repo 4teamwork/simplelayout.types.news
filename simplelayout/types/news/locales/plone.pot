@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-07-05 19:34+0000\n"
+"POT-Creation-Date: 2010-09-22 14:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,15 +15,11 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: atcontenttypes\n"
+"Domain: plone\n"
 
-#. Default: "There are currently no criteria on which to search. Please add them using the 'criteria' tab."
-#: ./simplelayout/types/news/browser/news_topic_listing.pt:108
-msgid "description_no_criteria_in_topic"
+#: ./egov/policy/base/profiles/default/actions.xml
+msgid "Favorites"
 msgstr ""
 
-#. Default: "There are currently no results for this search."
-#: ./simplelayout/types/news/browser/news_topic_listing.pt:101
-msgid "description_no_items_in_topic"
+msgid "label_schema_image"
 msgstr ""
-
