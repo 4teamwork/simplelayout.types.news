@@ -43,7 +43,7 @@ class NewsListing(BrowserView):
         if ct == 'ContentPage':
             return context.getFolderContents(query)
         elif ct == 'Collection':
-            import pdb; pdb.set_trace( )
+            return
         else:
             return    
         
@@ -78,7 +78,7 @@ class NewsListing(BrowserView):
                 Months.add(date)
             return Months
         elif ct == 'Collection':
-            import pdb; pdb.set_trace( )
+            return
         else:
             return
             
