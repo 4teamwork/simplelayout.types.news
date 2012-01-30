@@ -21,4 +21,6 @@
 
     <include file="dependencies.zcml" />
 
+    <include package=".browser" />
+    
 </configure>

@@ -15,5 +15,19 @@
       template="news_topic_listing.pt"
       />
 
+    <browser:page
+        for="*"
+        name="news_listing"
+        class=".newslisting.NewsListing"
+        permission="zope.Public"
+        allowed_attributes="news_result get_news"
+        />
+    <browser:page
+        for="*"
+        name="news_rss_listing"
+        class=".newslisting.NewsListing"
+        permission="zope.Public"
+        allowed_attributes="news_result get_news"
+        />
 
 </configure>

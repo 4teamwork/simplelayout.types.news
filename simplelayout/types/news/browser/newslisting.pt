@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+<metal:js fill-slot="javascript_head_slot">
+<script type="text/javascript">
+jq(function(){
+jq('form#archiv_form select').change(function(e){
+    jq('#news-result').load('./news_listing/news_result', jq('#archiv_form').serializeArray());
+});
+});
+</script>
+</metal:js>
+<metal:main fill-slot="content-core">
+<tal:define define="months view/get_months">
+<p>Archivierte News-Meldungen aus folgendem Jahr anzeigen:</p>
+	<form id="archiv_form" action="./news_listing" method="get">
+		Monat: <select name="showmonth">
+			<option value="" 
+					tal:attributes="selected python: request.get('showmonth','') == '' and 'selected' or ''"> - </option> 
+			
+			<tal:rep repeat="y months">
+				<option tal:attributes="value y;
+										selected python: request.get('showmonth','') == y and 'selected' or ''"
+						tal:content="python: view.get_months_strings(y)" i18n:translate=""></option>									
+			</tal:rep>
+		</select>
+		<input type="hidden" name="loadarchiv" value="1" />
+	</form>
+</tal:define>
+
+<div id="news-result" tal:content="structure view/news_result">news</div>
+
+</metal:main>
+</html>

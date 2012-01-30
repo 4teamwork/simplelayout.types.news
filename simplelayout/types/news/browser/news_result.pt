@@ -1,0 +1,9 @@
+
+<div tal:define="news view/get_news">
+    <div class="newslisting" tal:repeat="newsitem news">
+        <h2 tal:content="newsitem/Title" />
+        <tal:img tal:condition="python: view.has_img(newsitem)" tal:content="structure python:view.get_img(newsitem)"/>
+        <p tal:content="newsitem/Description" />
+        <a tal:attributes="href newsitem/getURL" i18n:translate="label_news_link">Read more ...</a>        
+    </div>
+</div>
