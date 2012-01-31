@@ -19,10 +19,10 @@ news_schema['effectiveDate'].required = True
 finalize_simplelayout_schema(news_schema, folderish=True)
 
 class News(Page):
-    
+
     implements(INews, ISimpleLayoutCapable)
-    security = ClassSecurityInfo()    
-    
+    security = ClassSecurityInfo()
+
     schema = news_schema
 
 

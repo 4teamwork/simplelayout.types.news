@@ -20,6 +20,7 @@
     <i18n:registerTranslations directory="locales" />
 
     <include file="dependencies.zcml" />
+    <include package=".browser" />
 
     <include package=".browser" />
     

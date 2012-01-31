@@ -2,19 +2,12 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:zcml="http://namespaces.zope.org/zcml"
-    i18n_domain="simplelayout.types.news">
+    i18n_domain="plone">
 
     <include package="plone.app.contentmenu" />
 
 
-    <browser:page
-      for="Products.ATContentTypes.interface.topic.IATTopic"
-      name="news_topic_listing"
-      class=".news_topic_listing.SimplelayoutNewsListing"
-      permission="zope.Public"
-      template="news_topic_listing.pt"
-      />
-
+    <!-- registered for *, because we use allowe_attr -->
     <browser:page
         for="*"
         name="news_listing"
@@ -22,6 +15,7 @@
         permission="zope.Public"
         allowed_attributes="news_result get_news"
         />
+
     <browser:page
         for="*"
         name="news_rss_listing"

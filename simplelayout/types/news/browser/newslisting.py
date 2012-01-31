@@ -2,23 +2,22 @@ from zope.publisher.browser import BrowserView
 import DateTime
 from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
 import datetime
-from Products.CMFPlone import PloneMessageFactory as _
 import calendar
 from zope.i18n import translate
 
 class NewsListing(BrowserView):
-    
+
     template = ViewPageTemplateFile('newslisting.pt')
     template_rss = ViewPageTemplateFile('newslisting_rss.pt')
     result_template = ViewPageTemplateFile('news_result.pt')
-    
+
     def __call__(self):
         if self.__name__ == 'news_rss_listing':
             return self.template_rss()
         return self.template()
-        
+
     def get_news(self):
-        """Troll"""
+        """Get all news items"""
         context = self.context
         request = self.request
         ct = context.portal_type
@@ -26,7 +25,7 @@ class NewsListing(BrowserView):
         query['portal_type'] = 'News'
         query['sort_on'] = 'effective'
         query['sort_order'] = 'reverse'
-        
+
         if request.get('showmonth', ''):
             date = request.get('showmonth', '').split(';')
             month = int(date[0])
@@ -35,7 +34,7 @@ class NewsListing(BrowserView):
             monthrange = calendar.monthrange(year, month)[1]
             lastday = datetime.date(year, month, monthrange)
             query['effective'] = {'query':(lastday,firstday),'range':'min:max'}
-        
+
         else:
             lastday = DateTime.DateTime()
             firstday = lastday - 28
@@ -45,19 +44,16 @@ class NewsListing(BrowserView):
         elif ct == 'Collection':
             return
         else:
-            return    
-        
+            return
+
     def has_img(self, news):
-        obj = news.getObject()
-        if obj.getImage():
-            return True
-        else: 
-            return False
+        return bool(news.getObject().getImage())
 
     def get_img(self, news):
         obj = news.getObject()
-        return obj.getField('image').tag(obj, scale='thumb', **{'class':'image-left'})
-        
+        scale = obj.restrictedTraverse('@@images')
+        return scale.scale('image', width="200", height="200").tag(**{'class':'image-left'})
+
     def get_months_strings(self, month):
         date = month.split(';')
         monthstring = datetime.date(int(date[1]), int(date[0]), 1).strftime('month_%b').lower()
@@ -81,7 +77,7 @@ class NewsListing(BrowserView):
             return
         else:
             return
-            
+
     def news_result(self):
         """Returns Newslisting"""
         return self.result_template()
