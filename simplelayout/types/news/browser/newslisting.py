@@ -44,8 +44,8 @@ class NewsListing(BrowserView):
                                   'range': 'min:max'}
         if ct == 'ContentPage':
             return context.getFolderContents(query)
-        elif ct == 'Collection':
-            return
+        elif ct == 'Topic':
+            return context.queryCatalog()
         else:
             return
 
