@@ -1,5 +1,6 @@
 from zope.i18nmessageid import MessageFactory
-from simplelayout.types.news.config import PROJECTNAME, product_globals, ADD_PERMISSIONS
+from simplelayout.types.news.config import PROJECTNAME,\
+    product_globals, ADD_PERMISSIONS
 
 from Products.Archetypes import atapi
 from Products.CMFCore import utils
@@ -19,7 +20,7 @@ def initialize(context):
     content_types, constructors, ftis = atapi.process_types(
         atapi.listTypes(PROJECTNAME),
         PROJECTNAME)
-        
+
     for atype, constructor in zip(content_types, constructors):
         utils.ContentInit("%s: %s" % (PROJECTNAME, atype.portal_type),
             content_types      = (atype,),
