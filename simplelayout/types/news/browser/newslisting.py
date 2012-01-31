@@ -57,7 +57,8 @@ class NewsListing(BrowserView):
         scale = obj.restrictedTraverse('@@images')
         return scale.scale(
             'image',
-            width="200", height="200").tag(**{'class': 'image-left'})
+            width=200,
+            height=200).tag(**{'class': 'image-left'})
 
     def get_months_strings(self, month):
         date = month.split(';')

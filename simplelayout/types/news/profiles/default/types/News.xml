@@ -14,7 +14,6 @@
  <property name="filter_content_types">True</property>
  <property name="allowed_content_types" purge="False">
   <element value="Paragraph"/>
-  <element value="Page"/>
   <element value="File"/>
   <element value="Link"/>
   <element value="Image"/>
