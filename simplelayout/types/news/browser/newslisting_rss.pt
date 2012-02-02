@@ -8,8 +8,6 @@
   xmlns:tal="http://xml.zope.org/namespaces/tal"
   xmlns:metal="http://xml.zope.org/namespaces/metal">
 
-  <tal:block define="dummy context/rssAllowed" />
-
   <tal:block
       define="
           syn context/portal_syndication;
