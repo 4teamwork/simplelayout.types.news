@@ -26,6 +26,7 @@ setup(name='simplelayout.types.news',
       install_requires=[
           'setuptools',
           'simplelayout.types.common',
+          'collective.portlet.collectionmultiview',
           # -*- Extra requirements: -*-
       ],
       entry_points="""

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<portlets>
+
+ <!-- Portlet type registrations -->
+
+ <portlet
+   addview="multiviewnewsportlet"
+   title="Multi View News Portlet"
+   description=""
+   />
+
+</portlets>
