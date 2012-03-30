@@ -6,7 +6,7 @@ from collective.portlet.collectionmultiview.collectionmultiview import (
     ICollectionMultiView,
     Assignment as base_assignment,
     Renderer as base_renderer)
-from collective.portlet.collectionmultiview import CollectionMultiViewMessageFactory as _
+from collective.portlet.collectionmultiview.i18n import messageFactory as _
 from plone.memoize.instance import memoize
 from zope.interface import implements
 
