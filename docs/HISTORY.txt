@@ -4,6 +4,9 @@ Changelog
 1.0.3 (unreleased)
 ------------------
 
+- Fix RSS-Feed format.
+  [mathias.leimgruber]
+
 - german translations
   [mathias.leimgruber]
 
