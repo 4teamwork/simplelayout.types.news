@@ -13,7 +13,7 @@
 </metal:js>
 <metal:main fill-slot="content-core">
 <tal:define define="months view/get_months" tal:condition="months">
-<p i18n:translate="text_archiv"></p>
+<p i18n:translate="text_archiv">Show archived news</p>
 	<form id="archiv_form" action="./news_listing" method="get">
 		<select name="showmonth">
 			<option value=""

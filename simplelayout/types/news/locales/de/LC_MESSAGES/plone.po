@@ -19,7 +19,7 @@ msgstr "Mehr..."
 
 #: simplelayout.types.news/simplelayout/types/news/browser/newslisting.pt:16
 msgid "text_archiv"
-msgstr "Archivierte News-Meldungen aus folgendem Jahr anzeigen:"
+msgstr "Archivierte News-Meldungen aus folgendem Monat anzeigen:"
 
 #. Default: "Text"
 #: simplelayout.types.news/simplelayout/types/news/browser/news_result.pt:10
