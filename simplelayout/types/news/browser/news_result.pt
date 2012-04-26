@@ -40,27 +40,6 @@
         </p>
         <div class="visualClear"><!-- --></div>
     </div>
-    
-    
-    
-    <div tal:condition="not:news" i18n:translate="text_not_content">Text</div>
+
+    <p tal:condition="not:news" i18n:translate="text_not_content">Text</p>
 </div>
-
-
-
-<!--
-<div tal:define="news view/get_news" i18n:domain="plone">
-    <div tal:condition="news" class="newslisting" tal:repeat="newsitem news">
-        <h2>
-            <span class="NewsDate" tal:content="python:newsitem.effective.strftime('%d.%m.%Y')">date</span>
-            <span class="NewsTitle" tal:content="newsitem/Title">Title</span>
-        </h2>
-        <tal:img tal:condition="python: view.has_img(newsitem)" tal:content="structure python:view.get_img(newsitem)"/>
-        <p tal:content="newsitem/Description" />
-        <a tal:attributes="href newsitem/getURL" i18n:translate="label_news_link">Read more ...</a>
-    </div>
-    <div tal:condition="not:news" class="newslisting">
-        <p i18n:translate="text_not_content">Text</p>
-    </div>
-</div>
--->

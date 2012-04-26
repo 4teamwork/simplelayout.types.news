@@ -4,7 +4,7 @@
       i18n:domain="plone">
 
       <metal:block metal:fill-slot="head_slot">
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost:8080/intranetbern/platform/stadtverwaltung/informationsdienst/news/news_rss_listing" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" tal:attributes="href string:${context/absolute_url}/news_rss_listing" />
       </metal:block>
 
 <metal:js fill-slot="javascript_head_slot">

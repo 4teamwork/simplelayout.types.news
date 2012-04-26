@@ -3,7 +3,6 @@ import DateTime
 from Products.CMFCore.utils import getToolByName
 from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
 import datetime
-import calendar
 from zope.i18n import translate
 
 
@@ -33,7 +32,6 @@ class NewsListing(BrowserView):
     def get_news(self):
         """Get all news items"""
         context = self.context
-        request = self.request
         ct = context.portal_type
         query = {}
         query['portal_type'] = 'News'
