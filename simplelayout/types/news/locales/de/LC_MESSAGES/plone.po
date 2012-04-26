@@ -17,10 +17,6 @@ msgstr ""
 msgid "label_news_link"
 msgstr "Mehr..."
 
-#: simplelayout.types.news/simplelayout/types/news/browser/newslisting.pt:16
-msgid "text_archiv"
-msgstr "Archivierte News-Meldungen aus folgendem Monat anzeigen:"
-
 #. Default: "Text"
 #: simplelayout.types.news/simplelayout/types/news/browser/news_result.pt:10
 msgid "text_not_content"
@@ -28,3 +24,11 @@ msgstr "Zurzeit ist kein Inhalt vorhanden."
 
 msgid "news_listing"
 msgstr "News Auflistung"
+
+msgid "label_from"
+msgstr "Von"
+
+msgid "label_to"
+msgstr "Bis"
+
+

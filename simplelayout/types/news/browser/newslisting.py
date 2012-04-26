@@ -1,5 +1,6 @@
 from zope.publisher.browser import BrowserView
 import DateTime
+from Products.CMFCore.utils import getToolByName
 from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
 import datetime
 import calendar
@@ -17,6 +18,18 @@ class NewsListing(BrowserView):
             return self.template_rss()
         return self.template()
 
+    def get_today(self, plus=0, minus=0):
+        date = DateTime.DateTime() + plus - minus
+        return date.Date()
+
+    def get_creator(self, item):
+        memberid = item.Creator
+        mt = getToolByName(self.context, 'portal_membership')
+        member = mt.getMemberById(memberid)
+        if member:
+            return member
+        return None
+
     def get_news(self):
         """Get all news items"""
         context = self.context
@@ -27,21 +40,25 @@ class NewsListing(BrowserView):
         query['sort_on'] = 'effective'
         query['sort_order'] = 'reverse'
 
-        if request.get('showmonth', ''):
-            date = request.get('showmonth', '').split(';')
-            month = int(date[0])
-            year = int(date[1])
-            firstday = datetime.date(year, month, 1)
-            monthrange = calendar.monthrange(year, month)[1]
-            lastday = datetime.date(year, month, monthrange)
-            query['effective'] = {'query': (lastday, firstday),
-                                  'range': 'min:max'}
 
+        end = self.request.form.get('end', '')
+        if end:
+            end = DateTime.DateTime(end).Date()
+        start = self.request.form.get('start', '')
+        if start:
+            start = DateTime.DateTime(start).Date()
+            if end:
+                query['effective'] = {'range': 'min:max',
+                                      'query': (start, end)}
+            else:
+                query['effective'] = {'range': 'min', 'query': start}
+        elif end:
+            query['effective'] = {'range': 'max', 'query': end}
         else:
-            lastday = DateTime.DateTime()
-            firstday = lastday - 28
-            query['effective'] = {'query': (lastday, firstday),
-                                  'range': 'min:max'}
+            query['effective'] = {'range': 'min:max',
+                                  'query': (self.get_today(minus=30),
+                                            self.get_today())}
+
         if ct == 'ContentPage':
             return context.getFolderContents(query)
         elif ct == 'Topic':
@@ -58,7 +75,7 @@ class NewsListing(BrowserView):
         return scale.scale(
             'image',
             width=200,
-            height=200).tag(**{'class': 'image-left'})
+            height=200).tag(**{'class': 'tileImage'})
 
     def get_months_strings(self, month):
         date = month.split(';')

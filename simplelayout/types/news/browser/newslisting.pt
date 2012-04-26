@@ -2,37 +2,47 @@
       lang="en"
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
+
+      <metal:block metal:fill-slot="head_slot">
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost:8080/intranetbern/platform/stadtverwaltung/informationsdienst/news/news_rss_listing" />
+      </metal:block>
+
 <metal:js fill-slot="javascript_head_slot">
     <script type="text/javascript">
     jq(function(){
-        jq('form#archiv_form select').change(function(e){
-            jq('#news-result').load('./news_listing/news_result', jq('#archiv_form').serializeArray());
+        var inputs = jq('form#archiv_form input');
+        var result = jq('#news-result');
+        inputs.datepicker();
+        inputs.change(function(e){
+            result.addClass('loading');
+            result.load('./news_listing/news_result', jq('#archiv_form').serializeArray(), function(){result.removeClass('loading');});
         });
     });
     </script>
 </metal:js>
 <metal:main fill-slot="content-core">
-<tal:define define="months view/get_months" tal:condition="months">
-<p i18n:translate="text_archiv">Show archived news</p>
-	<form id="archiv_form" action="./news_listing" method="get">
-		<select name="showmonth">
-			<option value=""
-					tal:attributes="selected python: request.get('showmonth','') == '' and 'selected' or ''"> - </option>
-
-			<tal:rep repeat="y months">
-				<option tal:attributes="value y;
-										selected python: request.get('showmonth','') == y and 'selected' or ''"
-						tal:content="python: view.get_months_strings(y)" i18n:translate=""></option>
-			</tal:rep>
-		</select>
-		<input type="hidden" name="loadarchiv" value="1" />
-	</form>
+<tal:define define="months view/get_months;toLocalizedTime nocall:context/@@plone/toLocalizedTime" tal:condition="months">
+<form id="archiv_form" action="./news_listing" method="get"
+      tal:define="start python:toLocalizedTime(view.get_today(minus=30));
+                  end python:toLocalizedTime(view.get_today());">
+    <div class="dateFields">
+        <label for="start"><span i18n:translate="label_from">From</span>:</label><br />
+        <input type="text" name="start" size="8" id="start" readonly="readonly"
+               tal:attributes="value request/start|start" />
+    </div>
+    <div class="dateFields">
+        <label for="end"><span i18n:translate="label_to">To</span>:</label><br />
+        <input type="text" name="end" size="8" id="end" readonly="readonly"
+               tal:attributes="value request/end|end" />
+    </div>
+</form>
+<div class="visualClear"><!-- --></div>
 </tal:define>
-
+<!--
 <p><br/>
     <a href="./news_rss_listing"><img tal:attributes="src string:${context/portal_url}/rss.gif" /></a>
 </p>
-
+-->
 <div id="news-result" tal:content="structure view/news_result">news</div>
 
 </metal:main>

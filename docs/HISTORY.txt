@@ -4,7 +4,8 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Improved news listing view.
+  [Julian Infanger]
 
 
 1.0.3 (2012-04-05)
