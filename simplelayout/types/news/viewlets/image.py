@@ -9,7 +9,7 @@ class NewsImage(ViewletBase):
     def render(self):
         return self.template()
 
-    def image(self):
+    def get_image(self):
         context = self.context.aq_explicit
         if context.getImage():
             scale = context.restrictedTraverse('@@images')
