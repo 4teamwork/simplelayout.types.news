@@ -4,6 +4,9 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
+- Added default date for news.
+  [Julian Infanger]
+
 - Added viewlets for byline and image.
   [Julian Infanger]
 
