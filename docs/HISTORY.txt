@@ -4,7 +4,10 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
-- Improved news listing view.
+- Added viewlets for byline and image.
+  [Julian Infanger]
+
+- Improved news listing view
   [Julian Infanger]
 
 

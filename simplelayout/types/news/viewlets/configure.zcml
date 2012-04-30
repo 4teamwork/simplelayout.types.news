@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="simplelayout">
+
+    <browser:viewlet
+        for="simplelayout.types.news.interfaces.INews"
+        name="simplelayout.types.news.image"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+        class=".image.NewsImage"
+        permission="zope2.View"
+        />
+
+    <browser:viewlet
+        for="simplelayout.types.news.interfaces.INews"
+        name="simplelayout.types.news.byline"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+        class=".byline.NewsByline"
+        permission="zope2.View"
+        />
+
+</configure>
