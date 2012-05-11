@@ -1,10 +1,11 @@
-<div class="simplelayoutNewsByLine documentByLine">
+<div class="simplelayoutNewsByLine documentByLine"
+     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
     <span class="documentAuthor">
-        erstellt von Blubb
+        erstellt von <tal:creator content="view/creator" />
     </span>
     &mdash;
     <span class="documentModified">
         zuletzt verändert:
-        26.04.2012 07:28
+        <tal:modified tal:content="python:toLocalizedTime(context.modified(), long_format=1)" />
     </span>
 </div>
