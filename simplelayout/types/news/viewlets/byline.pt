@@ -1,11 +1,14 @@
-<div class="simplelayoutNewsByLine documentByLine"
+<div i18n:domain="plone"
+     class="simplelayoutNewsByLine documentByLine"
      tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
     <span class="documentAuthor">
-        erstellt von <tal:creator content="view/creator" />
+        <tal:i18n i18n:translate="label_by_author">
+            by <tal:creator content="view/creator" i18n:name="author" />
+        </tal:i18n>
     </span>
     &mdash;
     <span class="documentModified">
-        zuletzt verändert:
+        <span i18n:translate="box_last_modified">last modified</span>
         <tal:modified tal:content="python:toLocalizedTime(context.modified(), long_format=1)" />
     </span>
 </div>
