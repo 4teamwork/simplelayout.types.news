@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.5 (unreleased)
+1.0.5 (2012-05-30)
 ------------------
 
 - Fixed byline viewlet. Added creator and modification date.
