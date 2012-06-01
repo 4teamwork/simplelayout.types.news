@@ -2,8 +2,6 @@ from zope.publisher.browser import BrowserView
 import DateTime
 from Products.CMFCore.utils import getToolByName
 from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
-import datetime
-from zope.i18n import translate
 
 
 class NewsListing(BrowserView):
@@ -74,36 +72,6 @@ class NewsListing(BrowserView):
             'image',
             width=200,
             height=200).tag(**{'class': 'tileImage'})
-
-    def get_months_strings(self, month):
-        date = month.split(';')
-        monthstring = datetime.date(
-            int(date[1]),
-            int(date[0]), 1).strftime('month_%b').lower()
-        monthstring = translate(
-            monthstring, domain='plonelocales', context=self.request)
-        return monthstring + ' ' + date[1]
-
-    def get_months(self):
-        context = self.context
-        ct = context.portal_type
-
-        if ct == 'ContentPage':
-            news = context.getFolderContents(
-                {'portal_type': 'News',
-                 'sort_on': 'effective',
-                 'sort_order': 'ascending', })
-            Months = set()
-            for newsitem in news:
-                month = newsitem.effective.month()
-                year = newsitem.effective.year()
-                date = str(month) + ';' + str(year)
-                Months.add(date)
-            return Months
-        elif ct == 'Collection':
-            return
-        else:
-            return
 
     def news_result(self):
         """Returns Newslisting"""
