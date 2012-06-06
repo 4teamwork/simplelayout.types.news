@@ -4,7 +4,12 @@ Changelog
 1.0.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Created upgradestep to install NewsFolder and dont allow to add
+  News in OrgUnit or ContentPage.
+  [Julian Infanger]
+
+- Added new content type NewsFolder. Created news_archive_listing.
+  [Julian Infanger]
 
 
 1.0.5 (2012-05-30)
