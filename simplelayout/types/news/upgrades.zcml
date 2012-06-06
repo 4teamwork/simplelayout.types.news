@@ -1,7 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:gs="http://namespaces.zope.org/genericsetup"
-    i18n_domain="tamedia.policy">
+    i18n_domain="simplelayout.types.news">
 
     <gs:registerProfile
         name="newsfolder"
@@ -13,7 +13,7 @@
         />
 
     <gs:upgradeStep
-        title="Upgrade profile for tamedia.policy"
+        title="Upgrade profile for simplelayout.types.news"
         description="Adds NewsFolder type."
         source="1"
         destination="2"
