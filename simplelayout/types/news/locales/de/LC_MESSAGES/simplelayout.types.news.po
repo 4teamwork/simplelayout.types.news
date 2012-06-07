@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-06-07 05:50+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: simplelayout.types.news\n"
+
+#: simplelayout.types.news/simplelayout/types/news/profiles/default/types/NewsFolder.xml
+#: simplelayout.types.news/simplelayout/types/news/profiles/newsfolder/types/NewsFolder.xml
+msgid "NewsFolder"
+msgstr "News-Ordner"
+
+#: simplelayout.types.news/simplelayout/types/news/portlets/news_portlet.py:18
+msgid "Types"
+msgstr ""
+
+#: simplelayout.types.news/simplelayout/types/news/portlets/news_portlet.py:19
+msgid "Types to list"
+msgstr ""
+
+
