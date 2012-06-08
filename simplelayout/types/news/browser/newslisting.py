@@ -55,12 +55,10 @@ class NewsListing(BrowserView):
                                   'query': (self.get_today(minus=30),
                                             self.get_today())}
 
-        if ct == 'ContentPage':
-            return context.getFolderContents(query)
-        elif ct == 'Topic':
+        if ct == 'Topic':
             return context.queryCatalog()
         else:
-            return
+            return context.getFolderContents(query)
 
     def has_img(self, news):
         """ Checks if the news have an image. If view is news_archive_listing

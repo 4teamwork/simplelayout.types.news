@@ -25,6 +25,9 @@ msgstr "Zurzeit ist kein Inhalt vorhanden."
 msgid "news_listing"
 msgstr "News Auflistung"
 
+msgid "news_archive_listing"
+msgstr "News Archiv"
+
 msgid "label_from"
 msgstr "Von"
 
