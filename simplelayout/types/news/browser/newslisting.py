@@ -34,8 +34,6 @@ class NewsListing(BrowserView):
         query = {}
         query['portal_type'] = 'News'
         query['sort_on'] = 'effective'
-        query['sort_order'] = 'reverse'
-
 
         end = self.request.form.get('end', '')
         if end:
