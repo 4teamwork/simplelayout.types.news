@@ -34,6 +34,8 @@ class NewsListing(BrowserView):
         query = {}
         query['portal_type'] = 'News'
         query['sort_on'] = 'effective'
+        query['sort_order'] = 'reverse'
+
 
         end = self.request.form.get('end', '')
         if end:
@@ -87,4 +89,6 @@ class NewsArchiveListing(NewsListing):
             return self.context.queryCatalog()
         return catalog(
             portal_type='News',
-            path='/'.join(self.context.getPhysicalPath()))
+            path='/'.join(self.context.getPhysicalPath()),
+            sort_on='effective',
+            sort_order='reverse')
