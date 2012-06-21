@@ -1,4 +1,3 @@
-import random
 from zope import schema
 from zope.formlib import form
 from plone.app.portlets.portlets import base
@@ -23,8 +22,8 @@ class INewsPortlet(ICollectionMultiView):
 class Assignment(base_assignment):
     """
     """
-
     implements(INewsPortlet)
+
 
 class Renderer(base_renderer):
     """
@@ -36,25 +35,11 @@ class Renderer(base_renderer):
         return self.context.absolute_url()
 
     def results(self):
-        if self.data.random:
-            return self._random_results()
-        else:
-            return self._standard_results()
-
-    def _standard_results(self):
         results = self.collection()
         limit = self.data.limit
         if limit and limit > 0:
             return results[:limit]
         return results
-
-    def _random_results(self):
-        # intentionally non-memoized
-        results = self.collection()
-        limit = self.data.limit and min(len(results), self.data.limit) or 1
-        if len(results) < limit:
-            limit = len(results)
-        return random.sample(results, limit)
 
     def collection(self):
         query = {}
@@ -67,8 +52,16 @@ class Renderer(base_renderer):
         query['sort_order'] = 'reverse'
         return self.context.portal_catalog(**query)
 
+    @property
     def available(self):
         return bool(self.results())
+
+    def update(self):
+        super(Renderer, self).update()
+        self.data.random = False
+        self.data.show_more = False
+        self.data.show_dates = False
+
 
 class AddForm(base.AddForm):
     """
@@ -80,9 +73,8 @@ class AddForm(base.AddForm):
         return Assignment(**data)
 
 
-
 class EditForm(base.EditForm):
     """
     """
     form_fields = form.Fields(INewsPortlet)
-    form_fields = form_fields.omit('random', 'show_dates')
+    form_fields = form_fields.omit('random', 'show_more', 'show_dates')
