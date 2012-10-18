@@ -4,6 +4,9 @@ Changelog
 1.0.9 (unreleased)
 ------------------
 
+- Import registerType from LinguaPlone if its installed.
+  [Julian Infanger]
+
 - Fix wrong initial metadata according to latest upgrade.
   [jone]
 
