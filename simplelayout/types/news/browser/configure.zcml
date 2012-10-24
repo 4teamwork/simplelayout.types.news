@@ -31,4 +31,11 @@
         allowed_attributes="news_result get_news"
         />
 
+    <browser:page
+        for="simplelayout.types.news.interfaces.INews"
+        name="block_view"
+        template="news_block_view.pt"
+        class=".news_block_view.NewsBlockView"
+        permission="zope2.View" />
+
 </configure>

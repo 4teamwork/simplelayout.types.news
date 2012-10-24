@@ -4,6 +4,9 @@ Changelog
 1.0.9 (unreleased)
 ------------------
 
+- Implement News as Simplelaylout block.
+  [mathias.leimgruber]
+
 - Import registerType from LinguaPlone if its installed.
   [Julian Infanger]
 
