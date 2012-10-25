@@ -3,6 +3,13 @@ import os
 
 version = '1.0.9.dev0'
 
+
+tests_require = [
+    'plone.app.testing',
+    'plone.mocktestcase',
+    'ftw.testing',
+    ]
+
 setup(name='simplelayout.types.news',
       version=version,
       description="",
@@ -26,9 +33,12 @@ setup(name='simplelayout.types.news',
       install_requires=[
           'setuptools',
           'simplelayout.types.common',
-          'collective.portlet.collectionmultiview',
+          'plone.formwidget.contenttree',
+
           # -*- Extra requirements: -*-
       ],
+      tests_require=tests_require,
+      extras_require=dict(tests=tests_require),
       entry_points="""
       # -*- Entry points: -*-
       """,
