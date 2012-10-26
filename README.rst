@@ -7,7 +7,7 @@ Provides a `simplelayout`_ page for news.
 Usage / Installation
 ====================
 
-- See the `simplelayout.base <https://github.com/4teamwork/simplelayout.base>`
+- See the `simplelayout.base <https://github.com/4teamwork/simplelayout.base>`_
   readme for details on installing simplelayout.
 
 - Add ``simplelayout.types.news`` to your buildout configuration:
