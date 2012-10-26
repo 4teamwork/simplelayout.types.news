@@ -2,7 +2,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 from zope import schema
 from simplelayout.types.news import _
 from plone.formwidget.contenttree import PathSourceBinder
-from z3c.form import form, button, field
+from z3c.form import form, button, field, interfaces
 from plone.app.portlets.browser.interfaces import IPortletAddForm
 from plone.app.portlets.browser.interfaces import IPortletEditForm
 from plone.app.portlets.interfaces import IPortletPermissionChecker
@@ -119,7 +119,11 @@ class AddForm(form.AddForm):
         self.fields['classification_items'].widgetFactory = MultiContentTreeFieldWidget
         self.fields['path'].widgetFactory = MultiContentTreeFieldWidget
         #self.fields['subjects'].widgetFactory = atapi.MultiSelectionWidget
+        if not self.context.portal_types.get('ClassificationItem', None):
+            self.fields['classification_items'].mode = interfaces.HIDDEN_MODE
         super(AddForm, self).updateWidgets()
+
+
 
     def create(self, data):
         return Assignment(
@@ -189,8 +193,6 @@ class Renderer(base.Renderer):
         query['sort_on'] = 'effective'
         query['sort_order'] = 'descending'
         results = catalog.searchResults(query)
-        import pdb; pdb.set_trace()
-
         return results[0:self.data.quantity -1]
 
 
@@ -241,4 +243,7 @@ class EditForm(form.EditForm):
     def updateWidgets(self):
         self.fields['classification_items'].widgetFactory = MultiContentTreeFieldWidget
         self.fields['path'].widgetFactory = MultiContentTreeFieldWidget
+        if not self.context.portal_types.get('ClassificationItem', None):
+            self.fields['classification_items'].mode = interfaces.HIDDEN_MODE
+
         super(EditForm, self).updateWidgets()
