@@ -84,6 +84,13 @@ class AddForm(form.AddForm):
         IPortletPermissionChecker(aq_parent(aq_inner(self.context)))()
         return super(AddForm, self).__call__()
 
+    def nextURL(self):
+        editview = aq_parent(aq_inner(self.context))
+        context = aq_parent(aq_inner(editview))
+        url = str(getMultiAdapter((context, self.request),
+                                  name=u"absolute_url"))
+        return url + '/@@manage-portlets'
+
     @button.buttonAndHandler(_(u"label_save", default=u"Save"), name='add')
     def handleAdd(self, action):
         data, errors = self.extractData()
@@ -98,7 +105,10 @@ class AddForm(form.AddForm):
     @button.buttonAndHandler(_(u"label_cancel", default=u"Cancel"),
                              name='cancel_add')
     def handleCancel(self, action):
-        return self.request.response.redirect(self.context.absolute_url())
+        nextURL = self.nextURL()
+        if nextURL:
+            self.request.response.redirect(nextURL)
+        return ''
 
     def add(self, object):
         ob = self.context.add(object)
@@ -197,6 +207,14 @@ class EditForm(form.EditForm):
         IPortletPermissionChecker(aq_parent(aq_inner(self.context)))()
         return super(EditForm, self).__call__()
 
+    def nextURL(self):
+        editview = aq_parent(aq_inner(self.context))
+        context = aq_parent(aq_inner(editview))
+        url = str(getMultiAdapter((context, self.request),
+                                  name=u"absolute_url"))
+        return url + '/@@manage-portlets'
+
+
     @button.buttonAndHandler(_(u"label_save", default=u"Save"), name='apply')
     def handleSave(self, action):
        data, errors = self.extractData()
@@ -209,13 +227,18 @@ class EditForm(form.EditForm):
        else:
            self.status = "No changes"
 
-       return self.request.response.redirect(self.context.absolute_url())
+       nextURL = self.nextURL()
+       if nextURL:
+           self.request.response.redirect(nextURL)
+       return ''
 
     @button.buttonAndHandler(_(u"label_cancel", default=u"Cancel"),
                              name='cancel_add')
     def handleCancel(self, action):
-        return self.request.response.redirect(self.context.absolute_url())
-
+        nextURL = self.nextURL()
+        if nextURL:
+            self.request.response.redirect(nextURL)
+        return ''
 
     def updateWidgets(self):
         self.fields['classification_items'].widgetFactory = MultiContentTreeFieldWidget
