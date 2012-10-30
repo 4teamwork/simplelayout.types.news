@@ -84,13 +84,6 @@ class AddForm(form.AddForm):
         IPortletPermissionChecker(aq_parent(aq_inner(self.context)))()
         return super(AddForm, self).__call__()
 
-    def nextURL(self):
-        addview = aq_parent(aq_inner(self.context))
-        context = aq_parent(aq_inner(addview))
-        if context.portal_type == 'Portlet Page':
-            return context.absolute_url() + '/@@portlets'
-        return context.absolute_url() + '/@@manage-home'
-
     @button.buttonAndHandler(_(u"label_save", default=u"Save"), name='add')
     def handleAdd(self, action):
         data, errors = self.extractData()
@@ -105,10 +98,7 @@ class AddForm(form.AddForm):
     @button.buttonAndHandler(_(u"label_cancel", default=u"Cancel"),
                              name='cancel_add')
     def handleCancel(self, action):
-        nextURL = self.nextURL()
-        if nextURL:
-            self.request.response.redirect(nextURL)
-        return ''
+        return self.request.response.redirect(self.context.absolute_url())
 
     def add(self, object):
         ob = self.context.add(object)
@@ -207,13 +197,6 @@ class EditForm(form.EditForm):
         IPortletPermissionChecker(aq_parent(aq_inner(self.context)))()
         return super(EditForm, self).__call__()
 
-    def nextURL(self):
-        addview = aq_parent(aq_inner(self.context))
-        context = aq_parent(aq_inner(addview))
-        if context.portal_type == 'Portlet Page':
-            return context.absolute_url() + '/@@portlets'
-        return context.absolute_url() + '/@@manage-home'
-
     @button.buttonAndHandler(_(u"label_save", default=u"Save"), name='apply')
     def handleSave(self, action):
        data, errors = self.extractData()
@@ -226,18 +209,12 @@ class EditForm(form.EditForm):
        else:
            self.status = "No changes"
 
-           nextURL = self.nextURL()
-           if nextURL:
-               self.request.response.redirect(self.nextURL())
-               return ''
+       return self.request.response.redirect(self.context.absolute_url())
 
     @button.buttonAndHandler(_(u"label_cancel", default=u"Cancel"),
                              name='cancel_add')
     def handleCancel(self, action):
-        nextURL = self.nextURL()
-        if nextURL:
-            self.request.response.redirect(nextURL)
-        return ''
+        return self.request.response.redirect(self.context.absolute_url())
 
 
     def updateWidgets(self):
