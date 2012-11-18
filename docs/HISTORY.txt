@@ -4,6 +4,9 @@ Changelog
 1.0.9 (unreleased)
 ------------------
 
+- Move package to github.
+  [jone]
+
 - Import registerType from LinguaPlone if its installed.
   [Julian Infanger]
 
@@ -79,4 +82,3 @@ Changelog
 - Initial release
 - news type based on simplelayout page
 - add simple topic summary news view
-
