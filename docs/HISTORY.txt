@@ -4,6 +4,9 @@ Changelog
 1.0.9 (unreleased)
 ------------------
 
+- Override plone byline. Don't register a second one.
+  [tschanzt]
+
 - Move package to github.
   [jone]
 

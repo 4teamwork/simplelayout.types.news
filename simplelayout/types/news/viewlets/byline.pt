@@ -1,6 +1,7 @@
 <div i18n:domain="plone"
      class="simplelayoutNewsByLine documentByLine"
-     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime"
+     tal:condition="view/show">
     <span class="documentAuthor">
         <tal:i18n i18n:translate="label_by_author">
             by <tal:creator content="view/creator" i18n:name="author" />
