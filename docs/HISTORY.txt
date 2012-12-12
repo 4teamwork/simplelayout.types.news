@@ -4,6 +4,9 @@ Changelog
 1.0.9 (unreleased)
 ------------------
 
+- Use new news portlet.
+  [timon.tschanz]
+
 - Move package to github.
   [jone]
 
