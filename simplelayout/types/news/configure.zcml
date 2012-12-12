@@ -25,4 +25,9 @@
     <include package=".portlets" />
     <include package=".viewlets" />
 
+  <utility
+    component=".vocabularies.SubjectVocabulary"
+    name="simplelayout.types.news.subjects"
+    />
+
 </configure>

@@ -4,8 +4,8 @@
  <!-- Portlet type registrations -->
 
  <portlet
-   addview="multiviewnewsportlet"
-   title="Multi View News Portlet"
+   addview="newsportlet"
+   title="News Portlet"
    description=""
    />
 

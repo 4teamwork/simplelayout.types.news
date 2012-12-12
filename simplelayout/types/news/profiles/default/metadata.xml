@@ -2,6 +2,6 @@
 <metadata>
     <version>2</version>
     <dependencies>
-        <dependency>profile-collective.portlet.collectionmultiview:default</dependency>
+      <dependency>profile-plone.formwidget.contenttree:default</dependency>
     </dependencies>
 </metadata>
