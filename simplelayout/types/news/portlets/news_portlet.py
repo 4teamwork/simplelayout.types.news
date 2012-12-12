@@ -1,19 +1,19 @@
-from plone.portlets.interfaces import IPortletDataProvider
-from zope import schema
-from simplelayout.types.news import _
-from plone.formwidget.contenttree import PathSourceBinder
-from z3c.form import form, button, field, interfaces
+from Acquisition import aq_parent, aq_inner
 from plone.app.portlets.browser.interfaces import IPortletAddForm
 from plone.app.portlets.browser.interfaces import IPortletEditForm
 from plone.app.portlets.interfaces import IPortletPermissionChecker
 from plone.app.portlets.portlets import base
-from Acquisition import aq_parent, aq_inner
-from zope.interface import implements
 from plone.formwidget.contenttree import MultiContentTreeFieldWidget
-from plone.formwidget.autocomplete import AutocompleteMultiFieldWidget
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from plone.formwidget.contenttree import PathSourceBinder
+from plone.portlets.interfaces import IPortletDataProvider
 from Products.CMFCore.utils import getToolByName
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from simplelayout.types.news import _
+from z3c.form import form, button, field, interfaces
+from zope import schema
 from zope.component import getMultiAdapter
+from zope.interface import implements
+
 
 class INewsPortlet(IPortletDataProvider):
 
@@ -64,7 +64,7 @@ class INewsPortlet(IPortletDataProvider):
     subjects = schema.List(
         title=_(u'label_subjects'),
         description=_(u'help_subjects'),
-            value_type = schema.Choice(
+            value_type=schema.Choice(
                 title=_("xx"),
                 vocabulary='simplelayout.types.news.subjects',
 
@@ -72,10 +72,9 @@ class INewsPortlet(IPortletDataProvider):
        )
 
 
-
 class AddForm(form.AddForm):
     implements(IPortletAddForm)
-    label=_(u'Add News Portlet')
+    label = _(u'Add News Portlet')
     description = _(u'This Portlet displays News')
 
     fields = field.Fields(INewsPortlet)
@@ -116,30 +115,30 @@ class AddForm(form.AddForm):
         return ob
 
     def updateWidgets(self):
-        self.fields['classification_items'].widgetFactory = MultiContentTreeFieldWidget
+        self.fields['classification_items'].widgetFactory = \
+            MultiContentTreeFieldWidget
         self.fields['path'].widgetFactory = MultiContentTreeFieldWidget
-        #self.fields['subjects'].widgetFactory = atapi.MultiSelectionWidget
         if not self.context.portal_types.get('ClassificationItem', None):
             self.fields['classification_items'].mode = interfaces.HIDDEN_MODE
         super(AddForm, self).updateWidgets()
 
-
-
     def create(self, data):
         return Assignment(
-            portlet_title = data.get('portlet_title', 'News'),
-            show_image = data.get('show_image', True),
-            only_context = data.get('only_context', True),
-            quantity = data.get('quantity', 5),
-            classification_items = data.get('classification_items', []),
-            path = data.get('path', []),
-            subjects = data.get('subjects', []),
+            portlet_title=data.get('portlet_title', 'News'),
+            show_image=data.get('show_image', True),
+            only_context=data.get('only_context', True),
+            quantity=data.get('quantity', 5),
+            classification_items=data.get('classification_items', []),
+            path=data.get('path', []),
+            subjects=data.get('subjects', []),
             )
+
 
 class Assignment(base.Assignment):
     implements(INewsPortlet)
 
-    def __init__(self, portlet_title="News", show_image=True, only_context=True, quantity=5, classification_items=[],
+    def __init__(self, portlet_title="News", show_image=True,
+                 only_context=True, quantity=5, classification_items=[],
                  path=[], subjects=[]):
         self.portlet_title = portlet_title
         self.show_image = show_image
@@ -153,9 +152,9 @@ class Assignment(base.Assignment):
     def title(self):
         return u'News Portlet'
 
+
 class Renderer(base.Renderer):
     render = ViewPageTemplateFile('news_portlet.pt')
-
 
     def tag_image(self, brain):
         if not self.data.show_image:
@@ -163,6 +162,7 @@ class Renderer(base.Renderer):
         obj = self.context.restrictedTraverse(brain.getPath())
         scale = getMultiAdapter((obj, self.request), name=u"images")
         scaled_img = scale.scale('image', scale='thumb', direction='down')
+
         if scaled_img:
             return scaled_img.tag()
         return ''
@@ -172,33 +172,38 @@ class Renderer(base.Renderer):
         url_tool = getToolByName(self.context, 'portal_url')
         portal_path = url_tool.getPortalPath()
         query = {'portal_type': 'News'}
+
         if self.data.only_context:
             path = '/'.join(self.context.getPhysicalPath())
             query['path'] = {'query': path}
+
         else:
             if self.data.path:
                 cat_path = []
-                for index,item in enumerate(self.data.path):
+                for index, item in enumerate(self.data.path):
                     cat_path.append('/'.join([portal_path, item]))
                 query['path'] = {'query': cat_path}
+
         if self.data.classification_items:
             cs_uids = []
             for item in self.data.classification_items:
-                obj = self.context.restrictedTraverse('/'.join([portal_path, item.strip('/')]))
+                obj = self.context.restrictedTraverse(
+                    '/'.join([portal_path, item.strip('/')]))
                 cs_uids.append(obj.UID())
             query['cs_uids'] = cs_uids
+
         if self.data.subjects:
             query['Subject'] = self.data.subjects
 
         query['sort_on'] = 'effective'
         query['sort_order'] = 'descending'
         results = catalog.searchResults(query)
-        return results[0:self.data.quantity -1]
+        return results[0:self.data.quantity - 1]
 
 
 class EditForm(form.EditForm):
     implements(IPortletEditForm)
-    label=_(u'Add News Portlet')
+    label = _(u'Add News Portlet')
     description = _(u'This Portlet displays News')
 
     fields = field.Fields(INewsPortlet)
@@ -214,23 +219,22 @@ class EditForm(form.EditForm):
                                   name=u"absolute_url"))
         return url + '/@@manage-portlets'
 
-
     @button.buttonAndHandler(_(u"label_save", default=u"Save"), name='apply')
     def handleSave(self, action):
-       data, errors = self.extractData()
-       if errors:
-           self.status = self.formErrorsMessage
-           return
-       changes = self.applyChanges(data)
-       if changes:
-           self.status = "Changes saved"
-       else:
-           self.status = "No changes"
+        data, errors = self.extractData()
+        if errors:
+            self.status = self.formErrorsMessage
+            return
+        changes = self.applyChanges(data)
+        if changes:
+            self.status = "Changes saved"
+        else:
+            self.status = "No changes"
 
-       nextURL = self.nextURL()
-       if nextURL:
-           self.request.response.redirect(nextURL)
-       return ''
+        nextURL = self.nextURL()
+        if nextURL:
+            self.request.response.redirect(nextURL)
+        return ''
 
     @button.buttonAndHandler(_(u"label_cancel", default=u"Cancel"),
                              name='cancel_add')
@@ -241,7 +245,8 @@ class EditForm(form.EditForm):
         return ''
 
     def updateWidgets(self):
-        self.fields['classification_items'].widgetFactory = MultiContentTreeFieldWidget
+        self.fields['classification_items'].widgetFactory = \
+            MultiContentTreeFieldWidget
         self.fields['path'].widgetFactory = MultiContentTreeFieldWidget
         if not self.context.portal_types.get('ClassificationItem', None):
             self.fields['classification_items'].mode = interfaces.HIDDEN_MODE

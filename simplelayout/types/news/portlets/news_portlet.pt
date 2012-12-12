@@ -37,7 +37,7 @@
         </dd>
     </tal:loop>
 
-    <dd class="portletFooter">
+    <dd class="portletFooter"><!-- -->
     </dd>
 
 </dl>
