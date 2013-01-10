@@ -28,6 +28,9 @@
   <utility
     component=".vocabularies.SubjectVocabulary"
     name="simplelayout.types.news.subjects"
-    />
+    
+  <class class="simplelayout.types.news.news.News">
+        <implements interface="simplelayout.base.interfaces.ISimpleLayoutBlock" />
+  </class> 
 
 </configure>

@@ -13,6 +13,9 @@ Changelog
 - Move package to github.
   [jone]
 
+- Implement News as Simplelaylout block.
+  [mathias.leimgruber]
+
 - Import registerType from LinguaPlone if its installed.
   [Julian Infanger]
 
