@@ -7,6 +7,9 @@ Changelog
 - Use new news portlet.
   [timon.tschanz]
 
+- Override plone byline. Don't register a second one.
+  [tschanzt]
+
 - Move package to github.
   [jone]
 

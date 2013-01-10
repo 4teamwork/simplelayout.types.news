@@ -1,9 +1,9 @@
-from plone.app.layout.viewlets import ViewletBase
+from plone.app.layout.viewlets import content
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
 
-class NewsByline(ViewletBase):
+class NewsByline(content.DocumentBylineViewlet):
 
     template = ViewPageTemplateFile('byline.pt')
 
