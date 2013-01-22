@@ -23,6 +23,8 @@
                     <p tal:condition="image_desc"
                        tal:content="context/getImageCaption">Caption</p>
     </div>
-    <div tal:condition="text" class="sl-text-wrapper" tal:content="structure text"></div>
+    <div tal:condition="text" class="sl-text-wrapper">
+        <p tal:content="structure text" class="documentDescription" />
+    </div>
 </div>
 <span class="visualClear">&nbsp;</span>
