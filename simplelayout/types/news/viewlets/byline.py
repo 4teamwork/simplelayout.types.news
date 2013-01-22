@@ -10,6 +10,12 @@ class NewsByline(content.DocumentBylineViewlet):
     def render(self):
         return self.template()
 
+    def update(self):
+        super(NewsByline, self).update()
+        self.plone_tools = getMultiAdapter(
+            (self.context, self.request),
+            name='plone_tools')
+        
     def creator(self):
         userid = self.context.Creator()
         mt = getToolByName(self.context, 'portal_membership')
@@ -20,10 +26,6 @@ class NewsByline(content.DocumentBylineViewlet):
 
     def getWorkflowState(self):
         state = self.context_state.workflow_state()
-        self.plone_tools = getMultiAdapter(
-            (self.context, self.request),
-            name='plone_tools')
-
         workflows = self.plone_tools.workflow().getWorkflowsFor(self.context)
         if workflows:
             for w in workflows:
