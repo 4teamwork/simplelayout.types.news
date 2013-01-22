@@ -20,11 +20,11 @@ class NewsByline(content.DocumentBylineViewlet):
 
     def getWorkflowState(self):
         state = self.context_state.workflow_state()
-        plone_tools = getMultiAdapter(
+        self.plone_tools = getMultiAdapter(
             (self.context, self.request),
             name='plone_tools')
 
-        workflows = plone_tools.workflow().getWorkflowsFor(self.context)
+        workflows = self.plone_tools.workflow().getWorkflowsFor(self.context)
         if workflows:
             for w in workflows:
                 if state in w.states:
