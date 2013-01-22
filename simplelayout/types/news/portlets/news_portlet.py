@@ -68,7 +68,8 @@ class INewsPortlet(IPortletDataProvider):
                 title=_("xx"),
                 vocabulary='simplelayout.types.news.subjects',
 
-            )
+            ),
+            required=False
        )
 
 

@@ -1,7 +1,7 @@
 from plone.app.layout.viewlets import content
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
-
+from zope.component import getMultiAdapter
 
 class NewsByline(content.DocumentBylineViewlet):
 
@@ -17,3 +17,25 @@ class NewsByline(content.DocumentBylineViewlet):
         if member:
             return member.getProperty('fullname') or userid
         return userid
+
+    def getWorkflowState(self):
+        state = self.context_state.workflow_state()
+        plone_tools = getMultiAdapter(
+            (self.context, self.request),
+            name='plone_tools')
+
+        workflows = plone_tools.workflow().getWorkflowsFor(self.context)
+        if workflows:
+            for w in workflows:
+                if state in w.states:
+                    return w.states[state].title or state
+
+    def show_state(self):
+        """Show viewlet, depends on available workflow transitions"""
+        # default - copied from plone.app.layout.viewlets.content
+        properties = getToolByName(self.context, 'portal_properties')
+        site_properties = getattr(properties, 'site_properties')
+        available = not self.anonymous
+        has_transitions = len(self.plone_tools.workflow() \
+            .getTransitionsFor(self.context))
+        return (available and has_transitions)

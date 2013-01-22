@@ -21,7 +21,8 @@ news_schema = page.page_schema.copy() + imageSchema.copy()
 
 news_schema['effectiveDate'].required = True
 news_schema['effectiveDate'].default_method = 'getDefaultEffectiveDate'
-
+news_schema.changeSchemataForField('effectiveDate', 'default')
+news_schema.changeSchemataForField('expirationDate', 'default')
 finalize_simplelayout_schema(news_schema, folderish=True)
 
 
@@ -35,5 +36,8 @@ class News(Page):
     def getDefaultEffectiveDate(self):
         return DateTime().Date()
 
+    security.declarePublic('show_description')
+    def show_description(self):
+        return False
 
 registerType(News, PROJECTNAME)
