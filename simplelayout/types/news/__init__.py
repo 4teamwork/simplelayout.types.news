@@ -16,7 +16,7 @@ def initialize(context):
     """Initializer called when used as a Zope 2 product."""
 
     import news
-
+    import newsfolder
     content_types, constructors, ftis = atapi.process_types(
         atapi.listTypes(PROJECTNAME),
         PROJECTNAME)

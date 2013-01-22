@@ -7,5 +7,12 @@
       <role name="Manager"/>
       <role name="Owner"/>
     </permission>
+    <permission name="simplelayout.types.news: Add NewsFolder"
+                acquire="True">
+      <role name="Contributor"/>
+      <role name="Manager"/>
+      <role name="Owner"/>
+    </permission>
+
   </permissions>
 </rolemap>
