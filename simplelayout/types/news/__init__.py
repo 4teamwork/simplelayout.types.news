@@ -6,10 +6,7 @@ from Products.Archetypes import atapi
 from Products.CMFCore import utils
 from Products.CMFCore.permissions import setDefaultRoles
 
-_ = MessageFactory('simplelayout')
-
-#register validator
-
+_ = MessageFactory('simplelayout.types.news')
 
 
 def initialize(context):

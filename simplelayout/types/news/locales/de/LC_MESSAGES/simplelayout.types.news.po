@@ -40,7 +40,7 @@ msgstr "Titel"
 
 #: ./simplelayout/types/news/portlets/news_portlet.py:44
 msgid "help_only_context"
-msgstr "Zeigt nur News aus dem aktuellen Bereich und unterhalb dar."
+msgstr "Wenn Ausgewählt, werden nur noch News vom jeweiligen Bereich angezeigt."
 
 #. Default: "Cancel"
 #: ./simplelayout/types/news/portlets/news_portlet.py:109
@@ -49,7 +49,7 @@ msgstr "Abbrechen"
 
 #: ./simplelayout/types/news/portlets/news_portlet.py:77
 msgid "label_desc_length"
-msgstr ""
+msgstr "Anzahl News"
 
 #: ./simplelayout/types/news/portlets/news_portlet.py:43
 msgid "label_only_context"
