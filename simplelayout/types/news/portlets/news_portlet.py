@@ -31,7 +31,7 @@ class INewsPortlet(IPortletDataProvider):
         title=_(u"Path"),
         description=u"",
         value_type=schema.Choice(
-            title=_(u"xx"),
+            title=u"dummy",
             source=PathSourceBinder(
                 navigation_tree_query={
                     'is_folderish': True},
@@ -49,7 +49,7 @@ class INewsPortlet(IPortletDataProvider):
         title=_(u"Classification Items"),
         description=u"",
         value_type=schema.Choice(
-            title=_(u"xx"),
+            title=u"dummy",
             source=PathSourceBinder(
                 navigation_tree_query={
                     'portal_type': 'ClassificationItem'},
@@ -64,13 +64,13 @@ class INewsPortlet(IPortletDataProvider):
     subjects = schema.List(
         title=_(u'label_subjects'),
             value_type=schema.Choice(
-                title=_("xx"),
+                title=u"dummy",
                 vocabulary='simplelayout.types.news.subjects',
 
             )
        )
 
-    show_desc = schema.Bool(title=_(u'label_show_desc', 
+    show_desc = schema.Bool(title=_(u'label_show_desc',
                                     default=u"Show Description"),
         default=True)
 
