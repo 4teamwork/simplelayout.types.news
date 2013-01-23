@@ -36,12 +36,12 @@
       tal:define="start python:toLocalizedTime(view.get_today(minus=30));
                   end python:toLocalizedTime(view.get_today());">
     <div class="dateFields">
-        <label for="start"><span i18n:translate="label_from">From</span>:</label><br />
+        <label for="start"><span i18n:translate="label_from">From</span>:</label>
         <input type="text" name="start" size="8" id="start"
                tal:attributes="value request/start|start" />
     </div>
     <div class="dateFields">
-        <label for="end"><span i18n:translate="label_to">To</span>:</label><br />
+        <label for="end"><span i18n:translate="label_to">To</span>:</label>
         <input type="text" name="end" size="8" id="end"
                tal:attributes="value request/end|end" />
     </div>
