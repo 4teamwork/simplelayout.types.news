@@ -4,6 +4,24 @@
     i18n_domain="simplelayout.types.news">
 
     <genericsetup:registerProfile
+        name="newsfolder"
+        title="Upgrade profile for simplelayout.types.news (adds NewsFolder)"
+        description="This profile upgrades simplelayout.types.news to version 1.1."
+        directory="profiles/newsfolder"
+        for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <genericsetup:upgradeStep
+        title="Upgrade profile for simplelayout.types.news"
+        description="Adds NewsFolder type."
+        source="1"
+        destination="2"
+        handler="simplelayout.types.news.upgrades.old.upgrade_newsfolder"
+        profile="simplelayout.types.news:default"
+        />
+
+    <genericsetup:registerProfile
         name="1090"
         title="simplelayout.types.news.upgrades.1090"
         description=""
