@@ -178,7 +178,8 @@ class Renderer(base.Renderer):
 
     @property
     def available(self):
-        return bool(self.get_news())
+        is_news = self.context.portal_type in ['News', 'NewsFolder']
+        return bool(self.get_news() and not is_news)
 
     def get_news(self):
         catalog = getToolByName(self.context, 'portal_catalog')
