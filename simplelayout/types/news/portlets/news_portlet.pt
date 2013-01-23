@@ -1,5 +1,5 @@
 <dl class="portlet portletCollection newsTemplate"
-    i18n:domain="ftw.contentpage"
+    i18n:domain="simplelayout.types.news"
     tal:define="plone_view context/@@plone;
                 toLocalizedTime nocall:plone_view/toLocalizedTime;">
 
