@@ -6,7 +6,7 @@
                 tal:attributes="id here/id;
                                 class string:simplelayout-block-wrapper ${slclass}${fullblock};
                                 style string:height:${view/getBlockHeight}">
-    <h2 tal:content="here/Title" tal:condition="here/getShowTitle|python:True" />
+
     <a tal:attributes="name here/id" ></a>
         <div class="sl-img-wrapper" tal:condition="view/checkForImage"
              tal:attributes="style view/image_wrapper_style"
