@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0.9 (unreleased)
-------------------
+1.1 (2013-01-24)
+----------------
 
 - Use new news portlet.
   [timon.tschanz]
