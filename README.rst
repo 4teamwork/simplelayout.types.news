@@ -29,6 +29,7 @@ Links
 - simplelayout.types.news github project repository: https://github.com/4teamwork/simplelayout.types.news
 - Issue tracker: https://github.com/4teamwork/simplelayout.types.news/issues
 - Package on pypi: http://pypi.python.org/pypi/simplelayout.types.news
+- Continuous integration: https://jenkins.4teamwork.ch/search?q=simplelayout.types.news
 
 
 Copyright
