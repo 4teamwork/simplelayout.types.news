@@ -49,7 +49,7 @@ msgstr "Abbrechen"
 
 #: ./simplelayout/types/news/portlets/news_portlet.py:77
 msgid "label_desc_length"
-msgstr "Anzahl News"
+msgstr "Länge der Beschreibung"
 
 #: ./simplelayout/types/news/portlets/news_portlet.py:43
 msgid "label_only_context"
