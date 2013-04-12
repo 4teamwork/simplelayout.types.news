@@ -89,11 +89,14 @@ class AddForm(form.AddForm):
         return super(AddForm, self).__call__()
 
     def nextURL(self):
-        editview = aq_parent(aq_inner(self.context))
-        context = aq_parent(aq_inner(editview))
-        url = str(getMultiAdapter((context, self.request),
-                                  name=u"absolute_url"))
-        return url + '/@@manage-portlets'
+        referer = self.request.form.get('referer')
+        if referer:
+            return referer
+        else:
+            addview = aq_parent(aq_inner(self.context))
+            context = aq_parent(aq_inner(addview))
+            url = str(getMultiAdapter((context, self.request), name=u"absolute_url"))
+            return url + '/@@manage-portlets'
 
     @button.buttonAndHandler(_(u"label_save", default=u"Save"), name='add')
     def handleAdd(self, action):
@@ -212,7 +215,7 @@ class Renderer(base.Renderer):
         query['sort_on'] = 'effective'
         query['sort_order'] = 'descending'
         results = catalog.searchResults(query)
-        return results[0:self.data.quantity - 1]
+        return results[:self.data.quantity]
 
     def crop_desc(self, description):
         ploneview = self.context.restrictedTraverse('@@plone')
@@ -230,11 +233,14 @@ class EditForm(form.EditForm):
         return super(EditForm, self).__call__()
 
     def nextURL(self):
-        editview = aq_parent(aq_inner(self.context))
-        context = aq_parent(aq_inner(editview))
-        url = str(getMultiAdapter((context, self.request),
-                                  name=u"absolute_url"))
-        return url + '/@@manage-portlets'
+        referer = self.request.form.get('referer')
+        if referer:
+            return referer
+        else:
+            addview = aq_parent(aq_inner(self.context))
+            context = aq_parent(aq_inner(addview))
+            url = str(getMultiAdapter((context, self.request), name=u"absolute_url"))
+            return url + '/@@manage-portlets'
 
     @button.buttonAndHandler(_(u"label_save", default=u"Save"), name='apply')
     def handleSave(self, action):
