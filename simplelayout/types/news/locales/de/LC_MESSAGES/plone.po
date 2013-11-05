@@ -22,7 +22,7 @@ msgstr "Mehr..."
 msgid "text_not_content"
 msgstr "Zurzeit ist kein Inhalt vorhanden."
 
-msgid "news_listing"
+msgid "news_listing_sl"
 msgstr "News Auflistung"
 
 msgid "news_archive_listing"

@@ -20,7 +20,7 @@
  <property name="default_view">news_archive_listing</property>
  <property name="view_methods">
   <element value="news_archive_listing"/>
-  <element value="news_listing"/>
+  <element value="news_listing_sl"/>
  </property>
  <property name="default_view_fallback">False</property>
  <alias from="(Default)" to="(dynamic view)"/>

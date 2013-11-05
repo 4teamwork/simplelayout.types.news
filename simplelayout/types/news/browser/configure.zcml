@@ -10,7 +10,7 @@
     <!-- registered for *, because we use allowe_attr -->
     <browser:page
         for="*"
-        name="news_listing"
+        name="news_listing_sl"
         class=".newslisting.NewsListing"
         permission="zope.Public"
         allowed_attributes="news_result get_news"
@@ -25,7 +25,7 @@
 
     <browser:page
         for="*"
-        name="news_rss_listing"
+        name="news_rss_listing_sl"
         class=".newslisting.NewsListing"
         permission="zope.Public"
         allowed_attributes="news_result get_news"

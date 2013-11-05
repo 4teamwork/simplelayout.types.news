@@ -11,7 +11,7 @@ class NewsListing(BrowserView):
     result_template = ViewPageTemplateFile('news_result.pt')
 
     def __call__(self):
-        if self.__name__ == 'news_rss_listing':
+        if self.__name__ == 'news_rss_listing_sl':
             return self.template_rss()
         return self.template()
 
