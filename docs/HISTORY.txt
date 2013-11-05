@@ -4,7 +4,11 @@ Changelog
 1.2.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- This package is deprecated, check README!
+  [mathias.leimgruber]
+
+- Rename some views for compatibility with ftw.contentpage
+  [mathias.leimgruber]
 
 
 1.2.2 (2013-10-21)

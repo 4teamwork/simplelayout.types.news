@@ -1,3 +1,15 @@
+DEPRECATED
+==========
+
+This package is deprecated.
+Please use `ftw.contentpage <https://pypi.python.org/pypi/ftw.contentpage>`_
+We dropped the maintenace/support of this package.
+Install at your own risk.
+
+Please contact support@4teamwork.ch if you are interested to migrate your
+old simplelayout news content to ftw.contentpage.
+
+
 Introduction
 ============
 
