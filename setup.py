@@ -21,7 +21,6 @@ setup(name='simplelayout.types.news',
 
       classifiers=[
         'Framework :: Plone',
-        'Framework :: Plone :: 4.1',
         'Framework :: Plone :: 4.2',
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries :: Python Modules',
